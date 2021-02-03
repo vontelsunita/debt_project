@@ -1,9 +1,9 @@
 package main
 
 import (
-    "debt_project/model"
+    "debt_project/db"
 )
 
 func main() {
-    model.ProcessDebts()
+    db.ProcessDebts()
 }

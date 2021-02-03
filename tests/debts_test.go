@@ -1,13 +1,13 @@
 package tests
 
 import (
-     "debt_project/model"
+     "debt_project/db"
      "testing"
 )
 
 func TestProcessDebts(t *testing.T) {
      //We know Debt ID 4 is not in payment plan and Debt ID 0 is paid off
-     debts, err := model.ProcessDebts()
+     debts, err := db.ProcessDebts()
      if err != nil {
           t.Errorf("%v", err)
      } else {
@@ -24,7 +24,7 @@ func TestProcessDebts(t *testing.T) {
 }
 
 func TestGetDebts(t *testing.T) {
-     debts, _ :=model.GetDebts()
+     debts, _ := db.GetDebts()
      numDebts := len(debts)
      if numDebts != 5 {
           t.Errorf("Num debts expecting 5 got %d", numDebts)
