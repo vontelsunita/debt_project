@@ -39,7 +39,9 @@ go test ./...
 There are 2 unit tests in the package tests. Those should execute and yield these results
 
 ?       debt_project    [no test files]
+
 ?       debt_project/model      [no test files]
+
 ok      debt_project/tests      2.749s
 
 
