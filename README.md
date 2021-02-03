@@ -2,10 +2,12 @@
 TrueAccord Take Home
 
 # Software Installations 
-##Install Golang
+Install Golang
+
 https://golang.org/doc/install
 
-#Instructions to build and run the project
+# Instructions to build and run the project
+
 In the src folder (/TrueAccord/go/src) run the following commands
 
 git clone git@github.com:vontelsunita/debt_project.git
@@ -29,5 +31,15 @@ INFO[0000] {"id":2,"amount":4920.34,"is_in_payment_plan":true,"remaining_amount"
 INFO[0000] {"id":3,"amount":12938,"is_in_payment_plan":true,"remaining_amount":622.41504,"next_payment_due_date":"2020-08-08T00:00:00Z"} 
 
 INFO[0000] {"id":4,"amount":9238.02,"is_in_payment_plan":false,"remaining_amount":0,"next_payment_due_date":null} 
+
+# Unit Tests
+
+go test ./... 
+
+There are 2 unit tests in the package tests. Those should execute and yield these results
+
+?       debt_project    [no test files]
+?       debt_project/model      [no test files]
+ok      debt_project/tests      2.749s
 
 
