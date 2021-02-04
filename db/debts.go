@@ -6,6 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
+	"sync"
 	"time"
 )
 
@@ -33,14 +34,33 @@ func GetDebts() ([]models.Debts, error) {
 }
 
 func ProcessDebts() ([]models.Debts, error) {
-	//Get all Debts
-	debts, err := GetDebts()
 
-	//Get all Payment Plans
-	payPlans, err := GetPaymentPlans()
+	var debts []models.Debts
+	var payPlans []models.PaymentsPlan
+	var paymentMap map[int]float32
+	var err error
+	var wg sync.WaitGroup
+	//Add Wait groups for for getting data
+	wg.Add(3)
+	//Create go routines for getting data
+	go func() {
+		defer wg.Done()
+		//Get all Debts
+		debts, err = GetDebts()
+	}()
 
-	//Accumulate all payments made for a PaymentPlan in map
-	paymentMap, err := GetPayments()
+	go func() {
+		defer wg.Done()
+		//Get all Payment Plans
+		payPlans, err = GetPaymentPlans()
+	}()
+
+	go func() {
+		defer wg.Done()
+		//Accumulate all payments made for a PaymentPlan in map
+		paymentMap, err = GetPayments()
+	}()
+	wg.Wait()
 
 	//Loop through all Payment Plans
 	for _, pp := range payPlans {
