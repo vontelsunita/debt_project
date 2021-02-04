@@ -37,11 +37,8 @@ INFO[0000] {"id":4,"amount":9238.02,"is_in_payment_plan":false,"remaining_amount
 go test ./... 
 
 There are 2 unit tests in the package tests. Those should execute and yield these results
-
 ?       debt_project    [no test files]
-
-?       debt_project/model      [no test files]
-
-ok      debt_project/tests      2.749s
-
+?       debt_project/db [no test files]
+?       debt_project/models     [no test files]
+ok      debt_project/tests      0.938s
 
